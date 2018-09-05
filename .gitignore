@@ -1,0 +1,34 @@
+.DS_Store
+*.suo
+*~
+*.user
+*.aps
+*.ipch
+*.pdb
+*.ilk
+*.exe
+*.swp
+debug.log
+
+# cmake build/output
+CMakeFiles/
+cmake_install.cmake
+CMakeCache.txt
+Makefile
+**/*.dir/
+cmake-build-*/
+
+# Compiled output
+ingredients/libingredients.a
+chapter??/chapter??
+chapter??/chapter??.exe
+
+.idea/
+*.cbp
+
+# Visual Studio projects, solutions, build folders, etc.
+*.vcxproj
+*.sln
+*.vcxproj.filters
+.vs/
+x64/
