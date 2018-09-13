@@ -1,5 +1,6 @@
 #include "scenejitter.h"
 
+#include <random>
 #include <iostream>
 using std::cerr;
 using std::endl;
@@ -156,7 +157,9 @@ void SceneJitter::buildJitterTex()
 
 // Return random float between -0.5 and 0.5
 float SceneJitter::jitter() {
-    return ((float)rand() / RAND_MAX) - 0.5f;
+    static std::default_random_engine generator;
+    static std::uniform_real_distribution<float> distrib(-0.5f, 0.5f);
+    return distrib(generator);
 }
 
 void SceneJitter::update( float t )

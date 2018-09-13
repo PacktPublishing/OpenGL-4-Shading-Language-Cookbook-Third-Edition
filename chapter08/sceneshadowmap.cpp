@@ -160,7 +160,7 @@ void SceneShadowMap::render()
     glUniformSubroutinesuiv( GL_FRAGMENT_SHADER, 1, &pass2Index);
     drawScene();
 
-    // Uncomment to draw the light's frustum
+    // Draw the light's frustum
     solidProg.use();
     solidProg.setUniform("Color", vec4(1.0f,0.0f,0.0f,1.0f));
     mat4 mv = view * lightFrustum.getInverseViewMatrix();

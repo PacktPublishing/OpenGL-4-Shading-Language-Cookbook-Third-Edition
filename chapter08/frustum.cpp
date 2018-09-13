@@ -77,13 +77,13 @@ void Frustum::setPerspective( float fovy, float ar, float nearDist, float farDis
 
 mat4 Frustum::getViewMatrix() const {
     glm::mat4 rot(u.x, v.x, n.x, 0, u.y, v.y, n.y, 0, u.z, v.z, n.z, 0, 0, 0, 0, 1);
-    glm::mat4 trans = glm::translate(glm::mat4(), glm::vec3(-center.x, -center.y, -center.z));
+    glm::mat4 trans = glm::translate(glm::mat4(1.0f), glm::vec3(-center.x, -center.y, -center.z));
     return rot * trans;
 }
 
 glm::mat4 Frustum::getInverseViewMatrix() const {
     glm::mat4 rot(u.x, u.y, u.z, 0, v.x, v.y, v.z, 0, n.x, n.y, n.z, 0, 0, 0, 0, 1);
-    glm::mat4 trans = glm::translate(glm::mat4(), glm::vec3(center.x, center.y, center.z));
+    glm::mat4 trans = glm::translate(glm::mat4(1.0f), glm::vec3(center.x, center.y, center.z));
     return trans * rot;
 }
 
