@@ -1,6 +1,9 @@
 set(target chapter02)
 
-set( chapter02_SOURCES main.cpp sceneseparable.cpp )
+set( chapter02_SOURCES main.cpp sceneseparable.cpp
+		scenebasic_uniformblock.cpp
+		scenebasic_attrib.cpp
+		scenebasic_uniform.cpp )
 
 add_executable( ${target} ${chapter02_SOURCES} )
 
