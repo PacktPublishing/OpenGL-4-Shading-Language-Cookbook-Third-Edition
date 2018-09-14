@@ -36,7 +36,7 @@ void main()
 
     // Transform light direction and view direction to tangent space
     vec3 pos = vec3( ModelViewMatrix * vec4(VertexPosition,1.0) );
-    LightDir = normalize( toObjectLocal * (Light.Position.xyz - pos) );
+    LightDir = toObjectLocal * (Light.Position.xyz - pos);
 
     ViewDir = toObjectLocal * normalize(-pos);
 
