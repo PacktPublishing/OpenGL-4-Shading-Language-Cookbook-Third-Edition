@@ -39,7 +39,7 @@ void SceneTwoSide::render()
 
 
     glm::vec4 worldLight = glm::vec4(2.0f,4.0f,2.0f,1.0f);
-    model = glm::rotate(mat4(), glm::radians(angle), vec3(0.0f,1.0f,0.0f));
+    model = glm::rotate(mat4(1.0f), glm::radians(angle), vec3(0.0f,1.0f,0.0f));
     prog.setUniform("Light.Position", view * model * worldLight );
 
     model = mat4(1.0f);
