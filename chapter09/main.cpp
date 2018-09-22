@@ -5,6 +5,7 @@
 #include "scenesky.h"
 #include "scenewood.h"
 #include "scenenoise.h"
+#include "scenerust.h"
 
 #include <memory>
 
@@ -14,7 +15,8 @@ std::map<std::string, std::string> sceneInfo = {
 		{ "night-vision", "night vision goggles" },
 		{ "paint", "paint spatters on a teapot" },
 		{ "sky", "clouds and sky" },
-		{ "wood", "wood " }
+		{ "wood", "wood " },
+		{"rust", "rust"}
 };
 
 int main(int argc, char *argv[])
@@ -36,6 +38,8 @@ int main(int argc, char *argv[])
 		scene = std::unique_ptr<Scene>( new SceneSky() );
 	} else if( recipe == "wood" ) {
 		scene = std::unique_ptr<Scene>( new SceneWood() );
+	} else if( recipe == "rust" ) {
+		scene = std::unique_ptr<Scene>( new SceneRust() );
 	} else {
 		printf("Unknown recipe: %s\n", recipe.c_str());
 		exit(EXIT_FAILURE);

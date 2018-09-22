@@ -1,5 +1,6 @@
 #include "texture.h"
 #include "stb/stb_image.h"
+#include "glutils.h"
 
 /*static*/
 GLuint Texture::loadTexture( const std::string & fName ) {
@@ -15,10 +16,14 @@ GLuint Texture::loadTexture( const std::string & fName ) {
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
-        stbi_image_free(data);
+        Texture::deletePixels(data);
     }
 
     return tex;
+}
+
+void Texture::deletePixels(unsigned char *data) {
+    stbi_image_free(data);
 }
 
 unsigned char *Texture::loadPixels(const std::string &fName, int & width, int & height, bool flip) {

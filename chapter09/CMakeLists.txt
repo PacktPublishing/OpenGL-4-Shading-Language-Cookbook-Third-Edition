@@ -8,6 +8,7 @@ set( chapter09_SOURCES
 	scenepaint.cpp
 	scenewood.cpp
 	scenenoise.cpp
+		scenerust.cpp scenerust.h
 )
 
 add_executable( ${target} ${chapter09_SOURCES} )
