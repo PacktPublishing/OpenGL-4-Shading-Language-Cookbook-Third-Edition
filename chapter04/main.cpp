@@ -15,7 +15,7 @@ std::map<std::string, std::string> sceneInfo = {
 	{ "per-frag", "Per-fragment shading" },
 	{ "spot", "Spot light" },
 	{ "toon", "Toon shading" },
-	{"pbr", "Physicall based rendering shader"}
+	{ "pbr", "Physically based rendering (PBR) shader"}
 };
 
 

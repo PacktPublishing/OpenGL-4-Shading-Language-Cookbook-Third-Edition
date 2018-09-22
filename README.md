@@ -26,10 +26,34 @@ compute shaders on that platform.
     favorite package manager.  Otherwise, the CMake config files will not be created/available.
 3.  Download this example code from [github][ghcookbook], or clone using git.
 4.  Run cmake.  If cmake has difficulties finding the GLFW or GLM installations,
-    set the variable [`CMAKE_PREFIX_PATH`][cmake_prefix] to help cmake find them.
+    set the variable [`CMAKE_PREFIX_PATH`][cmake_prefix] to help cmake find them.  
+    It can be tricky to get CMake to find the GLM libraries, unfortunately.  See
+    below for tips.
 5.  Compile by running `make`.
 
 Any problems, [create an issue](https://github.com/PacktPublishing/OpenGL-4-Shading-Language-Cookbook-Third-Edition/issues) on [github][ghcookbook].
+
+Tips for getting CMake to find GLM
+-----------------------------------------
+When searching for GLM, CMake looks for the files `glmConfig.cmake` and `glmConfigVersion.cmake`.
+
+If you install GLM using a package manager such as Homebrew on macOS, or a Linux package manager the
+ cmake files should already be included.  
+
+Otherwise, if you're using the GLM source distribution, you'll have to run GLM through CMake to get it to
+generate the `glmConfig.cmake` and `glmConfigVersion.cmake` files.  It is frustrating, I wish that the GLM 
+maintainers didn't require this.
+
+1.  Download GLM and extract it to some location: `GLM_SRC`
+1. `cd $GLM_SRC`
+1. `mkdir build`
+1. `cd build`
+1. `cmake -D GLM_TEST_ENABLE=OFF -D CMAKE_INSTALL_PREFIX=MY_GLM_LOCATION ..`
+1. `cmake --build . --target install`
+
+Replace `GLM_SRC` above with the place where you extracted the GLM zip file, and replace `MY_GLM_LOCATION` 
+with the location where you want to install GLM. This should generate the needed cmake files and install
+all of GLM to `MY_GLM_LOCATION`.
 
 Tips for compiling for Windows with Visual Studio
 ---------------------------------------------

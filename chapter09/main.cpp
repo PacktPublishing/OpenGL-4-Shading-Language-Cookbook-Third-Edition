@@ -16,7 +16,7 @@ std::map<std::string, std::string> sceneInfo = {
 		{ "paint", "paint spatters on a teapot" },
 		{ "sky", "clouds and sky" },
 		{ "wood", "wood " },
-		{"rust", "rust"}
+		{ "rust", "rust"}
 };
 
 int main(int argc, char *argv[])
