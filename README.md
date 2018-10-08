@@ -144,8 +144,8 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 is a professor in the computer science department at Pacific Lutheran University (PLU). He received a PhD in Physics and an MS in computer science from Oregon State University. He has been teaching computer graphics to undergraduates at PLU for over 17 years, using OpenGL.
 
 ## Other books by the author
-* [OpenGL 4.0 Shading Language Cookbook, Second Edition](https://www.packtpub.com/game-development/opengl-40-shading-language-cookbook?utm_source=GitHub&utm_medium=repository&utm_campaign=9781849514767)
-* [OpenGL 4.0 Shading Language Cookbook](https://www.packtpub.com/game-development/opengl-4-shading-language-cookbook-second-edition?utm_source=GitHub&utm_medium=repository&utm_campaign=9781782167020)
+* [OpenGL 4.0 Shading Language Cookbook](https://www.packtpub.com/game-development/opengl-40-shading-language-cookbook?utm_source=GitHub&utm_medium=repository&utm_campaign=9781849514767)
+* [OpenGL 4.0 Shading Language Cookbook, Second Edition](https://www.packtpub.com/game-development/opengl-4-shading-language-cookbook-second-edition?utm_source=GitHub&utm_medium=repository&utm_campaign=9781782167020)
 
 
 ### Suggestions and Feedback
