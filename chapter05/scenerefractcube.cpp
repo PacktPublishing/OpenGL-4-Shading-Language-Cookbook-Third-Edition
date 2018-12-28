@@ -21,7 +21,7 @@ void SceneRefractCube::initScene()
     glEnable(GL_DEPTH_TEST);
     angle = glm::radians(90.0f);
 
-	GLuint cubeTex = Texture::loadHdrCubeMap("../media/texture/cube/pisa-hdr-512/pisa");
+	GLuint cubeTex = Texture::loadHdrCubeMap("../media/texture/cube/pisa-hdr/pisa");
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, cubeTex);
 	glActiveTexture(GL_TEXTURE1);

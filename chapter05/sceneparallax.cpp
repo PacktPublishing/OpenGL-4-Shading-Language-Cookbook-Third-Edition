@@ -18,9 +18,9 @@ void SceneParallax::initScene()
 	angle = glm::radians(90.0f);
 
 	// Load textures
-	normalMap = Texture::loadTexture("../media/texture/noise/mybrick-normal.png");
-	heightMap = Texture::loadTexture("../media/texture/noise/mybrick-height.png");
-	colorMap = Texture::loadTexture("../media/texture/noise/mybrick-color.png");
+	normalMap = Texture::loadTexture("../media/texture/mybrick/mybrick-normal.png");
+	heightMap = Texture::loadTexture("../media/texture/mybrick/mybrick-height.png");
+	colorMap = Texture::loadTexture("../media/texture/mybrick/mybrick-color.png");
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, colorMap);
