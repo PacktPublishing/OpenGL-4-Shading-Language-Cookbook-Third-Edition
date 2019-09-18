@@ -9,6 +9,12 @@ if(MSVC)
   add_definitions(/DNOMINMAX)
 endif()
 
+if(UNIX)
+    message(STATUS "Running Linux compiling. Options [GLVND] for modern OpenGL or [LEGACY] for historical OpenGl.")
+    message(STATUS "Setting GLVND option.")
+    set(OpenGL_GL_PREFERENCE GLVND)
+endif()
+
 find_package( glm CONFIG REQUIRED )
 find_package( glfw3 CONFIG REQUIRED )
 find_package( OpenGL REQUIRED )

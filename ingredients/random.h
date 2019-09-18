@@ -2,6 +2,8 @@
 #define GLSLCOOKBOOK_RANDOM_H
 
 #include <random>
+// contains new std::shuffle definition
+#include <algorithm>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/constants.hpp>
@@ -22,10 +24,8 @@ public:
     }
 
     static void shuffle(std::vector<GLfloat> & v) {
-        std::random_device rd;
-        std::mt19937 g(rd());
-
-        std::shuffle(v.begin(), v.end(), g);
+		auto rng = std::default_random_engine {};
+		std::shuffle(v.begin(), v.end(), rng);
     }
 
 	glm::vec3 uniformHemisphere() {
