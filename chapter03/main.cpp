@@ -43,5 +43,5 @@ int main( int argc, char ** argv) {
 		scene = std::unique_ptr<Scene>(new SceneTwoSide());
 	}
 
-	return runner.run(*scene);
+	return runner.run(std::move(scene));
 }

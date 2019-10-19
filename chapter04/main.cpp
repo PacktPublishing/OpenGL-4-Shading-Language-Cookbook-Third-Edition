@@ -42,5 +42,5 @@ int main(int argc, char *argv[])
 	}
 
 
-	return runner.run(*scene);
+	return runner.run(std::move(scene));
 }

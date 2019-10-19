@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 		scene = std::unique_ptr<Scene>(new SceneBasic());
 	}
 
-	return runner.run(*scene);
+	return runner.run(std::move(scene));
 }
 
 

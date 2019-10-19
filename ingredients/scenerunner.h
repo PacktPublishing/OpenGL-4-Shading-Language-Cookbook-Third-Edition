@@ -10,6 +10,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <memory>
 
 class SceneRunner {
 private:
@@ -69,13 +70,9 @@ public:
 #endif
     }
 
-    int run(Scene & scene) {
-        scene.setDimensions(fbw, fbh);
-        scene.initScene();
-        scene.resize(fbw, fbh);
-
+    int run(std::unique_ptr<Scene> scene) {        
         // Enter the main loop
-        mainLoop(window, scene);
+        mainLoop(window, std::move(scene));
 
 #ifndef __APPLE__
 		if( debug )
@@ -116,18 +113,23 @@ private:
         }
     }
 
-    void mainLoop(GLFWwindow * window, Scene & scene) {
+    void mainLoop(GLFWwindow * window, std::unique_ptr<Scene> scene) {
+        
+        scene->setDimensions(fbw, fbh);
+        scene->initScene();
+        scene->resize(fbw, fbh);
+
         while( ! glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) ) {
             GLUtils::checkForOpenGLError(__FILE__,__LINE__);
 			
-            scene.update(float(glfwGetTime()));
-            scene.render();
+            scene->update(float(glfwGetTime()));
+            scene->render();
             glfwSwapBuffers(window);
 
             glfwPollEvents();
 			int state = glfwGetKey(window, GLFW_KEY_SPACE);
 			if (state == GLFW_PRESS)
-				scene.animate(!scene.animating());
+				scene->animate(!scene->animating());
         }
     }
 };

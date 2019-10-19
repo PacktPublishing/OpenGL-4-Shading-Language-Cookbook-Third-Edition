@@ -41,5 +41,5 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	return runner.run(*scene);
+	return runner.run(std::move(scene));
 }
