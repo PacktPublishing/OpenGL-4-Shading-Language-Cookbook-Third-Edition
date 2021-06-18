@@ -1,0 +1,120 @@
+Page 2
+
+Error: Chapter 2, Working with GLSL Programs, introduces the basic of communication between
+Correction: Chapter 2, Working with GLSL Programs, introduces the basics of communication between
+
+Page 46
+
+Error: glGetProgramResourceiv(programHhandle, GL_PROGRAM_INPUT,
+Correction: glGetProgramResourceiv(programHandle, GL_PROGRAM_INPUT,
+
+Page 49
+
+Error: #version 430
+Correction: #version 460
+
+Page 50
+
+Error: GLuint location = glGetUniformLocation(programHandle,
+Correction: GLint location = glGetUniformLocation(programHandle,
+
+Page 61
+
+Error: "BlobSettings. RadiusInner",
+Correction: "BlobSettings.RadiusInner",
+
+Page 64
+
+Error: const GLchar * codePtrs = {vertCode.c_str(), fragCode1.c_str(),
+Correction: const GLchar * codePtrs[] = {vertCode.c_str(), fragCode1.c_str(),
+
+Page 65
+
+Error: We pass the shader stage and the code string to function
+Correction: We pass the shader stage and the code string to the function
+
+Page 77
+
+Error: That is to say that the surface appears to scatter light in all directions equally, regardless of direction.
+Correction: That is to say that the surface appears to scatter light in all directions equally, regardless of the view direction.
+
+Page 104
+
+Error: glUniformSubroutinsuiv
+Correction: glUniformSubroutinesuiv
+
+Page 125
+
+Error: between 0 and levels - 1
+Correction: between 0 and levels
+Explanation: It is possible that sDotN is 1.0, so (1.0 * levels) will equal levels and subsequently floor(levels) would also be equal levels. 
+  In other words, there are (levels + 1) possible values, with the highest level being the least likely. Could this be fixed 
+  by making sure that sDotN is clamped to [0.0, 1.0 - epsilon]?
+
+Page 153
+
+Error: hightmap
+Correction: heightmap
+
+Page 154+
+
+Suggestion: "binormal" should be "bitangent" to align with more common usage.
+
+Page 157
+
+Error: Similarly, the view direction is computed and converted to tangent space by normalizing pos
+Correction: Similarly, the view direction is computed and converted to tangent space by normalizing -pos
+
+Page 165
+
+Error: The ray marchine process
+Correction: The ray marching process
+
+Page 167
+
+Error: If the z coordinate is small
+Correction: If the z coordinate is close to 1.0
+
+Page 167
+
+Error: The loop continues until the value in the height map (height) is less than the value of the discrete height level (ht).
+Correction: The loop continues while the value in the height map (height) is less than the value of the discrete height level (ht).
+
+Page 172
+
+Error: layout (location = 2) in vec2 VertexTexCoord;
+Correction: [remove the line]
+
+Page 172
+
+Error:
+uniform mat4 ModelViewMatrix;
+uniform mat4 ModelMatrix;
+uniform mat3 NormalMatrix;
+uniform mat4 ProjectionMatrix;
+uniform mat4 MVP;
+Correction:
+uniform mat4 ModelMatrix;
+uniform mat4 MVP;
+
+Page 178
+
+Error:
+uniform mat4 ModelViewMatrix;
+uniform mat4 ModelMatrix;
+uniform mat3 NormalMatrix;
+uniform mat4 ProjectionMatrix;
+uniform mat4 MVP;
+Correction:
+uniform mat4 ModelMatrix;
+uniform mat4 MVP;
+
+Page 185
+
+Error: projScaleTrans
+Correction: bias
+
+Page 185
+
+Error: The final matrix is the product of projScaleTrans, projProj, and projView, which is stored in m and assigned to the uniform variable ProjectorTex.
+Correction: The final matrix is the product of bias, projProj, and projView, which is assigned to the uniform variable ProjectorMatrix.
