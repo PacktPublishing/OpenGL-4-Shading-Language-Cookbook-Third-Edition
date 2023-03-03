@@ -24,7 +24,7 @@ add_library(${target} STATIC ${ingredients_SOURCES})
 
 target_include_directories(${target} PUBLIC glad/include)
 
-target_link_libraries(${target} PUBLIC glm)
+target_link_libraries(${target} PUBLIC glm::glm)
 
 if( UNIX AND NOT APPLE )
     target_link_libraries(${target} PUBLIC ${CMAKE_DL_LIBS})
