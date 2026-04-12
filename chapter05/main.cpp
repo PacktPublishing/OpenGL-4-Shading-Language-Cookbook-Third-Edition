@@ -12,6 +12,9 @@
 #include "scenediffibl.h"
 #include "sceneparallax.h"
 
+#include <functional>
+#include <unordered_map>
+
 std::map<std::string, std::string> sceneInfo = {
 	{ "alpha-test", "Discard fragments based on an alpha test." },
 	{ "multi-tex", "Multiple textures" },
@@ -26,37 +29,34 @@ std::map<std::string, std::string> sceneInfo = {
 	{"parallax", "Parallax mapping"}
 };
 
+static std::unique_ptr<Scene> createScene(const std::string &recipe) {
+	using SceneCreator = std::function<std::unique_ptr<Scene>()>;
+	static const std::unordered_map<std::string, SceneCreator> sceneCreators = {
+		{"alpha-test", [] { return std::unique_ptr<Scene>(new SceneAlphaTest()); }},
+		{"multi-tex", [] { return std::unique_ptr<Scene>(new SceneMultiTex()); }},
+		{"normal-map", [] { return std::unique_ptr<Scene>(new SceneNormalMap()); }},
+		{"proj-tex", [] { return std::unique_ptr<Scene>(new SceneProjTex()); }},
+		{"reflect-cube", [] { return std::unique_ptr<Scene>(new SceneReflectCube()); }},
+		{"refract-cube", [] { return std::unique_ptr<Scene>(new SceneRefractCube()); }},
+		{"render-to-tex", [] { return std::unique_ptr<Scene>(new SceneRenderToTex()); }},
+		{"sampler-obj", [] { return std::unique_ptr<Scene>(new SceneSamplerObj()); }},
+		{"texture", [] { return std::unique_ptr<Scene>(new SceneTexture()); }},
+		{"diff-ibl", [] { return std::unique_ptr<Scene>(new SceneDiffIbl()); }},
+		{"parallax", [] { return std::unique_ptr<Scene>(new SceneParallax()); }},
+	};
+
+	auto it = sceneCreators.find(recipe);
+	return (it == sceneCreators.end()) ? nullptr : it->second();
+}
+
 int main(int argc, char *argv[])
 {
 
 	std::string recipe = SceneRunner::parseCLArgs(argc, argv, sceneInfo);
 
 	SceneRunner runner("Chapter 5 - " + recipe, 1024, 678, 4);
-	std::unique_ptr<Scene> scene;
-	if( recipe == "alpha-test" ) {
-		scene = std::unique_ptr<Scene>( new SceneAlphaTest() );
-	} else if( recipe == "multi-tex") {
-		scene = std::unique_ptr<Scene>( new SceneMultiTex() );
-	} else if( recipe == "normal-map") {
-		scene = std::unique_ptr<Scene>( new SceneNormalMap() );
-	} else if( recipe == "proj-tex" ) {
-		scene = std::unique_ptr<Scene>( new SceneProjTex() );
-	} else if( recipe == "reflect-cube") {
-		scene = std::unique_ptr<Scene>( new SceneReflectCube() );
-	} else if( recipe == "refract-cube" ) {
-		scene = std::unique_ptr<Scene>( new SceneRefractCube() );
-	} else if( recipe == "render-to-tex" ) {
-		scene = std::unique_ptr<Scene>( new SceneRenderToTex() );
-	} else if( recipe == "sampler-obj" ) {
-		scene = std::unique_ptr<Scene>( new SceneSamplerObj() );
-	} else if( recipe == "texture" ) {
-		scene = std::unique_ptr<Scene>( new SceneTexture() );
-	} else if (recipe == "diff-ibl") {
-		scene = std::unique_ptr<Scene>(new SceneDiffIbl());
-	} else if (recipe == "parallax") {
-		scene = std::unique_ptr<Scene>(new SceneParallax());
-	}
-	else {
+	std::unique_ptr<Scene> scene = createScene(recipe);
+	if (!scene) {
 		printf("Unknown recipe: %s\n", recipe.c_str());
 		exit(EXIT_FAILURE);
 	}
